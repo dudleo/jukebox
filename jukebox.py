@@ -8,7 +8,7 @@ from pydub import AudioSegment
 import numpy as np
 
 ## FINAL overley with cycle!
-
+#p.get_device_info_by_index(1)
 
 '''
 GPIO.setmode(GPIO.BCM)
@@ -32,8 +32,10 @@ def record(key='a'):
 
 	FORMAT = pyaudio.paInt16
 	CHANNELS = 1
+	# CHANNELS = 2 1
 	# 2 Bytes in 2 Channels -> 4 Bytes per chunk
-	RATE = 44100
+	RATE = 16000
+	#RATE = 16000 44100
 	CHUNK = 1024
 	RECORD_SECONDS = 5
 	WAVE_OUTPUT_FILENAME = key + '.wav'
