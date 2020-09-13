@@ -31,7 +31,7 @@ def keyboard_is_pressed(key):
 def record(key='a'):
 
 	FORMAT = pyaudio.paInt16
-	CHANNELS = 2
+	CHANNELS = 1
 	# 2 Bytes in 2 Channels -> 4 Bytes per chunk
 	RATE = 44100
 	CHUNK = 1024
@@ -42,7 +42,7 @@ def record(key='a'):
 
 	# start Recording
 	stream = audio.open(format=FORMAT, channels=CHANNELS,
-						input_device_index=1,
+						input_device_index=2,
 						rate=RATE, input=True,
 						frames_per_buffer=CHUNK)
 	frames = []
