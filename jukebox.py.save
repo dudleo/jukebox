@@ -1,0 +1,16 @@
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+while True:
+	if GPIO.input(7) == GPIO.HIGH:
+		print("left button was pressed.")
+
+	if GPIO.input(23) == GPIO.HIGH or GPIO.input(24) == GPIO.HIGH or GPIO.input
+		print("right button was pressed.")
+	time.sleep(1)

@@ -1,0 +1,10 @@
+
+PINS Raspberry Pi 3 B v1.2
+mode: BCM
+https://www.raspberrypi.org/documentation/usage/gpio/
+
+
+BUTTONS
+https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/
+
+$ sudo apt-get install python-rpi.gpio python3-rpi.gpio
