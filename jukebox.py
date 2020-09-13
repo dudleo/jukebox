@@ -42,7 +42,7 @@ def record(key='a'):
 
 	# start Recording
 	stream = audio.open(format=FORMAT, channels=CHANNELS,
-						input_device_index=0,
+						input_device_index=1,
 						rate=RATE, input=True,
 						frames_per_buffer=CHUNK)
 	frames = []
@@ -77,7 +77,7 @@ def play(key='a'):
 	stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
 					channels=wf.getnchannels(),
 					rate=wf.getframerate(),
-					output_device_index=1,
+					output_device_index=0,
 					output=True)
 
 	# read data (based on the chunk size)
@@ -105,7 +105,7 @@ def play_final():
 	audio_stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
 						  channels=wf.getnchannels(),
 						  rate=wf.getframerate(),
-						  output_device_index=1,
+						  output_device_index=0,
 						  output=True)
 
 	keys = ['q', 'w', 'a']
