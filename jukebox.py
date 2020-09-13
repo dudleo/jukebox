@@ -79,7 +79,7 @@ def play(key='a'):
 	stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
 					channels=wf.getnchannels(),
 					rate=wf.getframerate(),
-					output_device_index=0,
+					#output_device_index=0,
 					output=True)
 
 	# read data (based on the chunk size)
@@ -107,7 +107,7 @@ def play_final():
 	audio_stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
 						  channels=wf.getnchannels(),
 						  rate=wf.getframerate(),
-						  output_device_index=0,
+						  #output_device_index=0,
 						  output=True)
 
 	keys = ['q', 'w', 'a']
