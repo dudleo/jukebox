@@ -6,6 +6,7 @@ import wave
 import keyboard
 from pydub import AudioSegment
 import numpy as np
+import sys
 
 input_device_id = 1
 output_device_id = 3
@@ -122,7 +123,7 @@ def play_final():
 	just_recorded = True
 	while True:
 		#final_audio = [0] * chunk * 4
-		final_audio = np.zeros(chunk * 2, dtype=np.int32)
+		final_audio = np.zeros(chunk * 1pq, dtype=np.int32)
 		for key in keys:
 
 			if keys_playing[key]:
@@ -180,39 +181,56 @@ def mix(keys=['q', 'w', 'a']):
 	final.export('final.wav', format='wav')
 
 
-mode = 'record'
-just_played = False
+def main():
 
-while True:
+	print(sys.argv[1:])
 
-	print('mode: ', mode)
+	for arg in sys.argv[1:]:
+		key, val = arg.split('=')
+		if key == 'in':
+			input_device_id = int(val)
+		elif key =='out':
+			output_device_id = int(val)
 
-	if mode == 'record':
-		keys = ['q', 'w', 'a']
+	print('input_device_id', input_device_id)
+	print('output_device_id', output_device_id)
 
-		for key in keys:
-			if keyboard.is_pressed(key):
-				if keyboard.is_pressed('r'):
-					print('recording ' + key + ' ...')
-					record(key)
-					print('end of recording '+ key)
-				else:
-					print('playing ' + key + ' ...')
-					play(key)
-					print('end of playing ' + key)
+	mode = 'record'
+	just_played = False
 
-		if not keyboard.is_pressed('p'):
-			just_played = False
+	while True:
 
-		elif keyboard.is_pressed('p') and not just_played:
-			mode = 'play'
+		print('mode: ', mode)
 
-	elif mode == 'play':
-		print('playing final...')
-		play_final()
+		if mode == 'record':
+			keys = ['q', 'w', 'a']
 
-		print('end of playing final.')
-		mode = 'record'
-		just_played = True
+			for key in keys:
+				if keyboard.is_pressed(key):
+					if keyboard.is_pressed('r'):
+						print('recording ' + key + ' ...')
+						record(key)
+						print('end of recording '+ key)
+					else:
+						print('playing ' + key + ' ...')
+						play(key)
+						print('end of playing ' + key)
 
-	time.sleep(0.1)
+			if not keyboard.is_pressed('p'):
+				just_played = False
+
+			elif keyboard.is_pressed('p') and not just_played:
+				mode = 'play'
+
+		elif mode == 'play':
+			print('playing final...')
+			play_final()
+
+			print('end of playing final.')
+			mode = 'record'
+			just_played = True
+
+		time.sleep(0.1)
+
+if __name__ == '__main__':
+	main()
