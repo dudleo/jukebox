@@ -123,7 +123,7 @@ def play_final():
 	just_recorded = True
 	while True:
 		#final_audio = [0] * chunk * 4
-		final_audio = np.zeros(chunk * 1pq, dtype=np.int32)
+		final_audio = np.zeros(chunk * 1, dtype=np.int32)
 		for key in keys:
 
 			if keys_playing[key]:
